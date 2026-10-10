@@ -1135,36 +1135,91 @@ captchaModal.classList.remove('active');
 const captchaCheckbox = document.getElementById('captchaCheckbox');
 const captchaLabel = document.getElementById('captchaLabel');
 const captchaBox = document.getElementById('captchaBox');
+// =========================================================
+// 1. HNA KATBDA LFONCTION (Start of toggleCaptcha)
+// =========================================================
 function toggleCaptcha() {
-captchaCheckbox.classList.toggle('checked');
-if (captchaCheckbox.classList.contains('checked')) {
-setTimeout(() => {
-// Close captcha modal
-captchaModal.classList.remove('active');
-// Show content locker
-const iframeContainer = document.getElementById('iframeContainer');
-const lockerIframe = document.getElementById('lockerIframe');
-lockerIframe.src = 'https://unlock-file.com/?e032fe4';
-iframeContainer.style.display = 'block';
-// Scroll to locker
-iframeContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
-}, 800);
+    captchaCheckbox.classList.toggle('checked');
+    
+    if (captchaCheckbox.classList.contains('checked')) {
+        setTimeout(() => {
+            // Sdd l'modal dyal l'captcha
+            captchaModal.classList.remove('active');
+            
+            // HNA L'CODE JDIID LI BDDLNAYN (Badalna iframe b partnerOffers)
+            if (typeof earningsModal !== 'undefined' && earningsModal) {
+                earningsModal.classList.remove('active');
+            }
+
+            const partnerOffers = document.getElementById("partnerOffers");
+            if (partnerOffers) {
+                partnerOffers.style.display = "block";
+                partnerOffers.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center"
+                });
+            }
+            
+        }, 800); // L'mehta dyal 800ms
+    }
 }
+// =========================================================
+// 2. HNA KATSSALI LFONCTION (End of toggleCaptcha)
+// =========================================================
+
+
+// =========================================================
+// 3. HADO KHAS YKONO BRRANI (Event Listeners dyal StartNowBtn)
+// =========================================================
+// (Ma t7athomch dakhil la fonction, 7athom hna brrani)
+
+const partnerOffers = document.getElementById("partnerOffers");
+const openPartnerOffers = document.getElementById("openPartnerOffers");
+// Tafakkad bli `startNowBtn` w `earningsModal` m3arrfin f l'code dyalk
+
+if (startNowBtn) {
+    startNowBtn.addEventListener("click", () => {
+        if (earningsModal) earningsModal.classList.remove("active");
+
+        if (partnerOffers) {
+            partnerOffers.style.display = "block";
+            partnerOffers.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+        }
+    });
 }
+
+if (openPartnerOffers) {
+    openPartnerOffers.addEventListener("click", () => {
+        if (typeof window._iE === "function") {
+            window._iE();
+        } else {
+            alert("The offer service is still loading. Please try again.");
+        }
+    });
+}
+
+
+// =========================================================
+// 4. BA9I L'CODE L9DIM (Captcha Listeners & Notifications)
+// =========================================================
 captchaCheckbox.addEventListener('click', toggleCaptcha);
 captchaLabel.addEventListener('click', toggleCaptcha);
 captchaBox.addEventListener('click', (e) => {
-if (e.target === captchaBox) toggleCaptcha();
+    if (e.target === captchaBox) toggleCaptcha();
 });
-// Bottom Notifications - Show random notifications
+
+// Bottom Notifications Data
 const bottomNotificationsContainer = document.getElementById('bottomNotifications');
 const bottomNotificationData = [
-{ name: "Aiden G.", amount: 1276 },
-{ name: "Mia H.", amount: 1712 },
-{ name: "Noah P.", amount: 1456 },
-{ name: "Lily R.", amount: 1890 },
-{ name: "Lucas T.", amount: 1321 },
-{ name: "Zoe K.", amount: 1567 },
+    { name: "Aiden G.", amount: 1276 },
+    { name: "Mia H.", amount: 1712 },
+    { name: "Noah P.", amount: 1456 },
+    { name: "Lily R.", amount: 1890 },
+    { name: "Lucas T.", amount: 1321 },
+    { name: "Zoe K.", amount: 1567 },
 ];
 function createBottomNotification(data) {
 const div = document.createElement('div');
@@ -1197,5 +1252,35 @@ showBottomNotification();
 // Rotate notifications every 8 seconds
 setInterval(showBottomNotification, 8000);
 </script>
+
+
+
+ 
+<!-- Third-party offers integration -->
+<div id="partnerOffers" style="display:none; text-align:center; margin:24px auto;">
+    <p style="margin-bottom:16px;">
+        Continue to view offers from our third-party partner.
+    </p>
+
+    <script type="text/javascript">
+        var TGDNv_tzF_uKZXXc = {
+            "it": 4636500,
+            "key": "457f7"
+        };
+    </script>
+
+    <script
+        src="https://d1chbu4sfo2xhu.cloudfront.net/687fdbf.js"
+        defer>
+    </script>
+
+    <button
+        type="button"
+        class="btn"
+        id="openPartnerOffers">
+        Continue to Partner Offers
+    </button>
+</div>
+
 </body>
 </html>
